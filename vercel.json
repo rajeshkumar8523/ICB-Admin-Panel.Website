@@ -1,0 +1,56 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "backend/app.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "backend/app.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "ICB-Admin-Panel/public/index.html"
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/LOGIN/(.*)",
+        "destination": "/ICB-Admin-Panel/public/LOGIN/$1"
+      },
+      {
+        "source": "/REGISTER/(.*)",
+        "destination": "/ICB-Admin-Panel/public/REGISTER/$1"
+      },
+      {
+        "source": "/PROFILE/(.*)",
+        "destination": "/ICB-Admin-Panel/public/PROFILE/$1"
+      },
+      {
+        "source": "/TRACKING/(.*)",
+        "destination": "/ICB-Admin-Panel/public/TRACKING/$1"
+      }
+    ],
+    "headers": [
+      {
+        "source": "/(.*)",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          },
+          {
+            "key": "Access-Control-Allow-Methods",
+            "value": "GET, POST, PUT, DELETE, OPTIONS"
+          },
+          {
+            "key": "Access-Control-Allow-Headers",
+            "value": "Content-Type, Authorization"
+          }
+        ]
+      }
+    ]
+  }
