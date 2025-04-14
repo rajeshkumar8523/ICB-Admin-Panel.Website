@@ -1,15 +1,27 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "public/login.html",
-        "use": "@vercel/static-build"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/public/$1"
-      }
-    ]
-  }
+  "version": 2,
+  "builds": [
+    {
+      "src": "public/login.html",
+      "use": "@vercel/static-build"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/LOGIN/(.*)",
+      "destination": "/public/LOGIN/$1"
+    },
+    {
+      "source": "/REGISTER/(.*)",
+      "destination": "/public/REGISTER/$1"
+    },
+    {
+      "source": "/PROFILE/(.*)",
+      "destination": "/public/PROFILE/$1"
+    },
+    {
+      "source": "/TRACKING/(.*)",
+      "destination": "/public/TRACKING/$1"
+    }
+  ]
+}
